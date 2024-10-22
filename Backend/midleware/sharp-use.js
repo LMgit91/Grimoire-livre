@@ -12,7 +12,6 @@ const imageResizing = (req, res, next) => {
         .webp({quality: 60})
         .toFile(newPath, (err, info) => {
             if(err){
-                console.log(err);
                 return res.status(500).json({error: 'Une erreur est survenu lors du traitement de image'});
             }
             fs.unlink(req.file.path, (err) => {

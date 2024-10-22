@@ -1,10 +1,9 @@
 //const { error } = require('console');
-const sharp = require('sharp');
 const Book = require('../models/Book');
 const fs = require('fs');
 
 //Call all books from the API
-exports.getAllBooks = (req, res, next) => {
+exports.getAllBooks = (req, res) => {
     Book.find().then(
         (books) => {
           res.status(200).json(books);
@@ -19,7 +18,7 @@ exports.getAllBooks = (req, res, next) => {
 }
 
 //Call one book from the API
-exports.getOneBooks = (req, res, next) => {
+exports.getOneBooks = (req, res) => {
     Book.findOne({
       _id: req.params.id
     }).then(
@@ -44,10 +43,12 @@ exports.getBestBooks = (req, res) => {
   }
 
 //Allow to add new book on the repertory
-exports.addBooks = (req, res, next) => {
+exports.addBooks = (req, res) => {
+    //On récupère tous les les éléments que l'on parse.
     const bookObj = JSON.parse(req.body.book);
     delete bookObj._id;
     delete bookObj._userId;
+    //Création d'un nouveau book auquel on ajoute userId(celui qui donne l'autorisation d'ajouter des éléments) et l'image.
     const book = new Book({
         ...bookObj,
         userId: req.auth.userId,
@@ -60,12 +61,15 @@ exports.addBooks = (req, res, next) => {
  };
 
 //Allow to delete book
-exports.deleteBooks =  (req, res, next) => {
+exports.deleteBooks =  (req, res) => {
+  //on cherche le book a effacé
     Book.findOne({_id : req.params.id})
     .then(book => {
+      //On vérifie que l'userId est bon
       if(book.userId != req.auth.userId){
         res.status(401).json({message: 'Not authorized'})
       }else{
+        //on se sert de la librairie fs pour effacés les fichiers dans le dossier image.
         const filename = book.imageUrl.split('/images/')[1];
         fs.unlink(`images/${filename}`, () => {
           Book.deleteOne({_id : req.params.id})
@@ -78,10 +82,13 @@ exports.deleteBooks =  (req, res, next) => {
   }
 
 //Allow to modify book
-exports.modifyBooks = (req, res, next) => {
+exports.modifyBooks = (req, res) => {
+  //il y a deux cas si téléchargement de fichier ou non, si il y a téléchargement on ajoute la nouvelle image url.
   const bookObj = req.file ? {...JSON.parse(req.body.book), imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`} : {...req.body};
+  //On efface le userId qui n'est pas fiable.
   delete bookObj._userId;
   Book.findOne({_id : req.params.id}).then((book) => {
+    //on s'assure que l'utilisateur a le droit de faire ces modifications si oui on ajoute les modifications
     if (book.userId != req.auth.userId) {
         res.status(401).json({ message : 'Not authorized'});
     }else {
@@ -95,40 +102,43 @@ exports.modifyBooks = (req, res, next) => {
   });
 }
 
-//Allow to post a rata on a book
+//Allow to post a rate on a book
 
-exports.addRating = (req, res, next) => {
-    if(req.body.rating >= 0 || req.body.rating <= 5){
-    const objTosend = {...req.body, grade: req.body.rating};
-    delete req.body._id;
-    //On lance la recherche du book que l'on veut noter
-      Book.findOne({_id: req.params.id})
-      .then(book => {
-        const newArray = book.ratings.map((item) => item.userId);
-        const newTabRatings = book.ratings;
-        if(newArray.includes(req.auth.userId)){
-          res.status(401).json({message: 'Unauthorized'});
-        }else{
-          newTabRatings.push(objTosend);
-          //We recalcul the averageBook thanks to a reduce
-          const ratingTab1 = newTabRatings.map(item => item.grade);
-          const tabSize = newTabRatings.length;
-          const ratingTab = ratingTab1.reduce((acc, item) => acc + item ,0)
-          const newAverage = Math.round(ratingTab/tabSize);
-
-          Book.updateOne({ _id: req.params.id}, { grade: newTabRatings, averageRating : newAverage, _id: req.params._id})
-            .then(() => res.status(200).json({message : 'Ajout de la note!'}))
-            .catch(error => res.status(401).json({ error }));
-        }
-      }).catch((error) => res.status(500).json({error}))
-    }else{
-      res.status(500).json({message: 'La valeur de la note doit etre comprise en 0 et 5'})
-    }
+exports.addRating = async(req, res) => {
   
-  /*mise en place du rating
-  -rating doit contenir un unique userId et la note donné.
-  -cela entraine une modification un update de averageRating.
-  - la note doit etre comprise entre 0 et 5.
-  - l'user id et le grade doivent etre ajouté au ratings.
-  */
-}
+	const rating = req.body.rating;
+ //On s'assure que le rating est bien compris entre 0 et 5.
+	if (rating < 1 || rating > 5) {
+		return res.status(400).json({ error: "The grade should be betwwen 0 and 5" });
+	}
+
+	try {
+		//On vérifie si l'utilisateur n'a pas déjà noté le livre.
+		const book = await Book.findById(req.params.id);
+		const newArray = book.ratings.map((item) => item.userId);
+      if(newArray.includes(req.auth.userId)){
+        res.status(401).json({error: 'Unauthorized, user have already grade this book'});
+      }
+
+		//Updating du book en ajoutant le grade et userId.
+		const updateRating = await Book.findByIdAndUpdate(
+			req.params.id,
+			{
+				$push: { ratings: { userId: req.auth.userId, grade: rating } },
+			},
+			{ returnOriginal: false }
+		);
+
+		//Calcul à l'aide du reduce de la nouvelle valeur de averageRating et mise à jour
+		const numberOfRate = updateRating.ratings.length;
+		const sumOfRate = updateRating.ratings.reduce((acc, item) => acc + item.grade, 0);
+		updateRating.averageRating = (sumOfRate / numberOfRate).toFixed(0);
+
+		await updateRating.save();
+		return res.json(updateRating);
+	} catch (error) {
+		return res.status(500).json({ error });
+	}
+
+        
+  } 
