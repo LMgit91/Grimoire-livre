@@ -1,0 +1,60 @@
+Le Frontend du site est déja codé, il est disponible sur github: https://github.com/OpenClassrooms-Student-Center/P7-Dev-Web-livres.git
+On install les dépendances grâce à npm install et on lance le projet grâce à la commande npm start.
+
+Le Backend doit être au port 4000, c'est à partir de ce port que le frontend va faire ces requêtes.
+
+On aura deux model pour les données:
+1 User {
+email : String - il y aura l'adresse e-mail de l’utilisateur qui devra être unique 
+password : String - mot de passe  après avoir été haché de l’utilisateur
+}
+
+2 Book {
+userId : String 
+title : String
+author : String 
+imageUrl : String 
+year: Number 
+genre: String 
+ratings : [
+{
+userId : String 
+grade : Number 
+}
+]
+averageRating : Number 
+}
+
+-Il faudra bien penser à modifier l'adresse de la requête auprès de mongodb: mongoose.connect('mongodb+srv://jimbob:<PASSWORD>@cluster0-pme76.mongodb.net/test?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true }). 
+-Il faudra s'assurer que vous mettiez votre propre nom d'utilisateur et mot de passe mongodb. Une fois l'adresse mongodb corectement indiquée, il vous suffit de lancer le node index ou nodemon index pour lancer l'Api.
+
+The site's frontend is already coded and is available on GitHub: https://github.com/OpenClassrooms-Student-Center/P7-Dev-Web-livres.git
+I have code myself the backend of the website.
+Install the dependencies using npm install and launch the project using the npm start command.
+
+The backend must be on port 4000; this is the port from which the frontend will make its requests.
+
+We will have two models for the data:
+1. User {
+email: String - this will be the user's email address, which must be unique
+password: String - the user's password after being hashed
+}
+
+2. Book {
+userId: String
+title: String
+author: String
+imageUrl: String
+year: Number
+genre: String
+ratings: [
+{
+userId: String
+grade: Number
+}
+]
+averageRating: Number
+}
+
+-You will need to remember to modify the request address to Mongodb: mongoose.connect('mongodb+srv://jimbob:<PASSWORD>@cluster0-pme76.mongodb.net/test?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true }).
+-You will need to make sure that you put your own mongodb username and password. Once the mongodb address is correctly indicated, you just need to launch the node index or nodemon index to launch the API.
