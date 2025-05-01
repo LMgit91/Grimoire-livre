@@ -1,4 +1,4 @@
-//const { error } = require('console');
+
 const Book = require('../models/Book');
 const fs = require('fs');
 
@@ -34,7 +34,7 @@ exports.getOneBooks = (req, res) => {
     );
   }
 
-//Call the three best book of the repertory
+//Call the three best books of the repertory
 exports.getBestBooks = (req, res) => {
   Book.find().sort({averageRating : -1}).limit(3)
     .then(book => res.status(200).json(book)
@@ -42,7 +42,7 @@ exports.getBestBooks = (req, res) => {
     
   }
 
-//Allow to add new book on the repertory
+//Allow to add a new book on the repertory
 exports.addBooks = (req, res) => {
     //On récupère tous les les éléments que l'on parse.
     const bookObj = JSON.parse(req.body.book);
