@@ -29,7 +29,6 @@ averageRating : Number
 -Il faudra s'assurer que vous mettiez votre propre nom d'utilisateur et mot de passe mongodb. Une fois l'adresse mongodb corectement indiquée, il vous suffit de lancer le node index ou nodemon index pour lancer l'Api.
 
 The site's frontend is already coded and is available on GitHub: https://github.com/OpenClassrooms-Student-Center/P7-Dev-Web-livres.git
-I have code myself the backend of the website.
 Install the dependencies using npm install and launch the project using the npm start command.
 
 The backend must be on port 4000; this is the port from which the frontend will make its requests.
