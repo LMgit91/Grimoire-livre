@@ -1,6 +1,6 @@
 const express = require('express');
 const auth = require('../midleware/auth')
-const objControl = require('../controller/Book');
+const objControl = require('../controller/book');
 const router = express.Router();
 const multer = require('../midleware/multerFile');
 const imageResizing = require('../midleware/sharp-use');
