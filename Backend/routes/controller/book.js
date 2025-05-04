@@ -1,5 +1,5 @@
 const { error } = require('console');
-const Book = require('../models/Book');
+const Book = require('../models/book');
 const fs = require('fs');
 //Call all books from the API
 exports.getAllBooks = (req, res, next) => {
