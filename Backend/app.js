@@ -12,7 +12,9 @@ mongoose.connect('mongodb+srv://dra_moh:BDYaSbUjm1pyt4eO@cluster0.i9jcq.mongodb.
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 //
-app.use(cors());
+app.use(cors({
+    origin: "https://lmgit91.github.io/Grimoire-livre/",
+}));
 //help use to manage the req body entrance
 app.use(bodyParser.json());
 //Appel du router dans app.js
