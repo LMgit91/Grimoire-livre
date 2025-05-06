@@ -13,7 +13,7 @@ mongoose.connect('mongodb+srv://dra_moh:BDYaSbUjm1pyt4eO@cluster0.i9jcq.mongodb.
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 //
 app.use(cors({
-    origin: "https://lmgit91.github.io/",
+    origin: "https://lmgit91.github.io",
 }));
 //help use to manage the req body entrance
 app.use(bodyParser.json());
