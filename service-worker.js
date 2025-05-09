@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Grimoire-livre/precache-manifest.1d19870c1f9273dcbf17de41efe4f211.js"
+  "/Grimoire-livre/precache-manifest.c7e16b2b90a5a1b7fbf1fba8fd15c186.js"
 );
 
 self.addEventListener('message', (event) => {
