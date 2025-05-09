@@ -52,7 +52,8 @@ exports.addBooks = (req, res) => {
     const book = new Book({
         ...bookObj,
         userId: req.auth.userId,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        //imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        imageUrl: `https://grimoire-livre-13.onrender.com/images/${req.file.filename}`
     });
   
     book.save()
