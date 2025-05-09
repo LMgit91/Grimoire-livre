@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Grimoire-livre/static/css/main.1ae55a85.chunk.css",
-    "main.js": "/Grimoire-livre/static/js/main.25574016.chunk.js",
-    "main.js.map": "/Grimoire-livre/static/js/main.25574016.chunk.js.map",
+    "main.js": "/Grimoire-livre/static/js/main.b216ab57.chunk.js",
+    "main.js.map": "/Grimoire-livre/static/js/main.b216ab57.chunk.js.map",
     "runtime-main.js": "/Grimoire-livre/static/js/runtime-main.d2905431.js",
     "runtime-main.js.map": "/Grimoire-livre/static/js/runtime-main.d2905431.js.map",
     "static/js/2.64774d8f.chunk.js": "/Grimoire-livre/static/js/2.64774d8f.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.b94a50de.chunk.js": "/Grimoire-livre/static/js/3.b94a50de.chunk.js",
     "static/js/3.b94a50de.chunk.js.map": "/Grimoire-livre/static/js/3.b94a50de.chunk.js.map",
     "index.html": "/Grimoire-livre/index.html",
-    "precache-manifest.c7e16b2b90a5a1b7fbf1fba8fd15c186.js": "/Grimoire-livre/precache-manifest.c7e16b2b90a5a1b7fbf1fba8fd15c186.js",
+    "precache-manifest.ce6fb285ae1c5d193a504d2e2396462a.js": "/Grimoire-livre/precache-manifest.ce6fb285ae1c5d193a504d2e2396462a.js",
     "service-worker.js": "/Grimoire-livre/service-worker.js",
     "static/css/main.1ae55a85.chunk.css.map": "/Grimoire-livre/static/css/main.1ae55a85.chunk.css.map",
     "static/js/2.64774d8f.chunk.js.LICENSE.txt": "/Grimoire-livre/static/js/2.64774d8f.chunk.js.LICENSE.txt",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.d2905431.js",
     "static/js/2.64774d8f.chunk.js",
     "static/css/main.1ae55a85.chunk.css",
-    "static/js/main.25574016.chunk.js"
+    "static/js/main.b216ab57.chunk.js"
   ]
 }

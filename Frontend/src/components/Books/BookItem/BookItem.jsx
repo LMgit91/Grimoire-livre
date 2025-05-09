@@ -21,7 +21,10 @@ function BookItem({ book, size }) {
   return (
     <Link to={`/livre/${book.id}`} className={styles.BookItem}>
       <article>
-        <img className={styles.BookImage} src={book.imageUrl} alt={`${book.title}, ${book.author} - ${book.year}`} />
+        <img className={styles.BookImage} src={book.imageUrl}  onError={(e) => {
+    e.target.onerror = null; // évite une boucle infinie
+    e.target.src = 'https://via.placeholder.com/206x260?text=Image+indisponible';
+  }} alt={`${book.title}, ${book.author} - ${book.year}`} />
         <div className={styles.BookInfo}>
           <div className={styles.Rating}>
             {displayStars(book.averageRating)}
