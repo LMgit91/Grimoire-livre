@@ -5,6 +5,7 @@ import { displayStars } from '../../../lib/functions';
 import styles from './BookItem.module.css';
 
 function BookItem({ book, size }) {
+  console.log(book.imageUrl);
   let title;
   switch (size) {
     case 2:

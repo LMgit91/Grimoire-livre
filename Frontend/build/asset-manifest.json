@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/Grimoire-livre/static/css/main.1ae55a85.chunk.css",
+    "main.js": "/Grimoire-livre/static/js/main.9871d673.chunk.js",
+    "main.js.map": "/Grimoire-livre/static/js/main.9871d673.chunk.js.map",
+    "runtime-main.js": "/Grimoire-livre/static/js/runtime-main.d2905431.js",
+    "runtime-main.js.map": "/Grimoire-livre/static/js/runtime-main.d2905431.js.map",
+    "static/js/2.64774d8f.chunk.js": "/Grimoire-livre/static/js/2.64774d8f.chunk.js",
+    "static/js/2.64774d8f.chunk.js.map": "/Grimoire-livre/static/js/2.64774d8f.chunk.js.map",
+    "static/js/3.b94a50de.chunk.js": "/Grimoire-livre/static/js/3.b94a50de.chunk.js",
+    "static/js/3.b94a50de.chunk.js.map": "/Grimoire-livre/static/js/3.b94a50de.chunk.js.map",
+    "index.html": "/Grimoire-livre/index.html",
+    "precache-manifest.1d19870c1f9273dcbf17de41efe4f211.js": "/Grimoire-livre/precache-manifest.1d19870c1f9273dcbf17de41efe4f211.js",
+    "service-worker.js": "/Grimoire-livre/service-worker.js",
+    "static/css/main.1ae55a85.chunk.css.map": "/Grimoire-livre/static/css/main.1ae55a85.chunk.css.map",
+    "static/js/2.64774d8f.chunk.js.LICENSE.txt": "/Grimoire-livre/static/js/2.64774d8f.chunk.js.LICENSE.txt",
+    "static/media/Logo.92701564.svg": "/Grimoire-livre/static/media/Logo.92701564.svg",
+    "static/media/book_add.jpg": "/Grimoire-livre/static/media/book_add.aad45f62.jpg",
+    "static/media/book_delete.png": "/Grimoire-livre/static/media/book_delete.6b4ebe26.png",
+    "static/media/home_banner.jpg": "/Grimoire-livre/static/media/home_banner.95688b52.jpg",
+    "static/media/map_footer.png": "/Grimoire-livre/static/media/map_footer.6630600a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d2905431.js",
+    "static/js/2.64774d8f.chunk.js",
+    "static/css/main.1ae55a85.chunk.css",
+    "static/js/main.9871d673.chunk.js"
+  ]
+}
