@@ -55,6 +55,7 @@ export async function getBook(id) {
       method: 'GET',
       url: `${API_ROUTES.BOOKS}/${id}`,
     });
+    console.log("Réponse getBooks:", response.data);
     const book = response.data;
     // eslint-disable-next-line no-underscore-dangle
     book.id = book._id;
