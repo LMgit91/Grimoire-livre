@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c16fdadd159cb5ef0e23b9cbb52bd745",
+    "revision": "b3d0793574da39a7e581035509d27f7f",
     "url": "/Grimoire-livre/index.html"
   },
   {
-    "revision": "48169e230a92e3e52c5f",
+    "revision": "32d450cb4ff50207ce5c",
     "url": "/Grimoire-livre/static/css/main.1ae55a85.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Grimoire-livre/static/js/3.b94a50de.chunk.js"
   },
   {
-    "revision": "48169e230a92e3e52c5f",
-    "url": "/Grimoire-livre/static/js/main.b216ab57.chunk.js"
+    "revision": "32d450cb4ff50207ce5c",
+    "url": "/Grimoire-livre/static/js/main.f4e101b4.chunk.js"
   },
   {
     "revision": "18fe02cf27fe9326c4bc",
