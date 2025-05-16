@@ -12,9 +12,22 @@ mongoose.connect('mongodb+srv://dra_moh:BDYaSbUjm1pyt4eO@cluster0.i9jcq.mongodb.
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 //
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://lmgit91.github.io'
+];
+
 app.use(cors({
-    origin: "https://lmgit91.github.io",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS policy: Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
+
 //help use to manage the req body entrance
 app.use(bodyParser.json());
 //Appel du router dans app.js
